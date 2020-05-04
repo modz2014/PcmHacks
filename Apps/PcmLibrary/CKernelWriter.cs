@@ -311,8 +311,6 @@ namespace PcmHacking
                         this.logger.AddUserMessage("Writing...");
                     }
 
-                    this.logger.AddUserMessage("Address\t% Done\tTime Remaining");
-
                     Response<bool> writeResponse = await WriteMemoryRange(
                         range,
                         image,
@@ -516,7 +514,7 @@ namespace PcmHacking
                     }
                 }
 
-                logger.ReportProgress("Writing", totalWritten / totalSize);
+                logger.ReportProgress("Writing", (double)(totalWritten + thisPayloadSize) / totalSize);
 
                 await this.vehicle.SetDeviceTimeout(TimeoutScenario.WriteMemoryBlock);
 

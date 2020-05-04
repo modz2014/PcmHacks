@@ -119,7 +119,11 @@ namespace PcmHacking
         /// </summary>
         public override void ReportProgress(string operation, double fractionCompleted)
         {
-            this.progressBar.Value = (int)(fractionCompleted * 100);
+            this.progressBar.Invoke(
+                (MethodInvoker)delegate ()
+                {
+                    this.progressBar.Value = (int)(fractionCompleted * 100);
+                });
         }
 
         /// <summary>
@@ -231,6 +235,7 @@ namespace PcmHacking
                 this.MinimumSize = new Size(800, 600);
 
                 menuItemEnable4xReadWrite.Checked = Configuration.Enable4xReadWrite;
+                this.operation.Text = string.Empty;
             }
             catch (Exception exception)
             {
@@ -762,6 +767,9 @@ namespace PcmHacking
         {
             using (new AwayMode())
             {
+                bool success = false;
+                string path = "";
+
                 try
                 {
                     this.Invoke((MethodInvoker)delegate ()
@@ -778,7 +786,6 @@ namespace PcmHacking
                     }
 
                     // Get the path to save the image to.
-                    string path = "";
                     this.Invoke((MethodInvoker)delegate ()
                     {
                         path = this.ShowSaveAsDialog();
@@ -797,6 +804,8 @@ namespace PcmHacking
                             path = null;
                             return;
                         }
+
+                        this.operation.Text = "Saving to " + path;
                     });
 
                     if (path == null)
@@ -867,7 +876,6 @@ namespace PcmHacking
                     }
 
                     // Save the contents to the path that the user provided.
-                    bool success = false;
                     do
                     {
                         try
@@ -907,6 +915,16 @@ namespace PcmHacking
                     {
                         this.EnableUserInput();
                         this.cancelButton.Enabled = false;
+                        this.progressBar.Value = 0;
+
+                        if (success)
+                        {
+                            this.operation.Text = "Completed read from " + path;
+                        }
+                        else
+                        {
+                            this.operation.Text = "Something went wrong while reading from " + path;
+                        }
                     });
 
                     // The token / token-source can only be cancelled once, so we need to make sure they won't be re-used.
@@ -922,6 +940,9 @@ namespace PcmHacking
         {
             using (new AwayMode())
             {
+                string path = null;
+                bool success = false;
+
                 try
                 {
                     this.currentWriteType = writeType;
@@ -935,7 +956,6 @@ namespace PcmHacking
 
                     this.cancellationTokenSource = new CancellationTokenSource();
 
-                    string path = null;
                     this.Invoke((MethodInvoker)delegate ()
                     {
                         this.DisableUserInput();
@@ -955,6 +975,8 @@ namespace PcmHacking
                             path = null;
                             return;
                         }
+
+                        SetStatusBeforeWrite(writeType, path);
                     });
 
 
@@ -1097,7 +1119,7 @@ namespace PcmHacking
                         writeType,
                         this);
 
-                    await writer.Write(
+                    success = await writer.Write(
                         image,
                         kernelVersion,
                         validator,
@@ -1118,12 +1140,125 @@ namespace PcmHacking
                     {
                         this.EnableUserInput();
                         this.cancelButton.Enabled = false;
+                        this.progressBar.Value = 0;
+
+                        SetStatusAfterWrite(writeType, path, success);
                     });
 
                     // The token / token-source can only be cancelled once, so we need to make sure they won't be re-used.
                     this.cancellationTokenSource = null;
                 }
             }
+        }
+
+        private void SetStatusBeforeWrite(WriteType writeType, string path)
+        {
+            string operationType;
+            switch (writeType)
+            {
+                case WriteType.Calibration:
+                    operationType = "Writing calibration from";
+                    break;
+
+                case WriteType.Compare:
+                    operationType = "Comparing with";
+                    break;
+
+                case WriteType.Full:
+                    operationType = "Full write from";
+                    break;
+
+                case WriteType.OsPlusCalibrationPlusBoot:
+                    operationType = "Writing all but parameters from";
+                    break;
+
+                case WriteType.Parameters:
+                    operationType = "Writing parameters from";
+                    break;
+
+                case WriteType.TestWrite:
+                    operationType = "Test write from";
+                    break;
+
+                default:
+                    operationType = "Unsupported operation with";
+                    break;
+            }
+
+            this.operation.Text = operationType + " " + path;
+        }
+
+        private void SetStatusAfterWrite(WriteType writeType, string path, bool success)
+        {
+            string operationType;
+            if (success)
+            {
+                switch (writeType)
+                {
+                    case WriteType.Calibration:
+                        operationType = "Finished writing calibration from";
+                        break;
+
+                    case WriteType.Compare:
+                        operationType = "Finished Comparing with";
+                        break;
+
+                    case WriteType.Full:
+                        operationType = "Finished full write from";
+                        break;
+
+                    case WriteType.OsPlusCalibrationPlusBoot:
+                        operationType = "Finished writing all but parameters from";
+                        break;
+
+                    case WriteType.Parameters:
+                        operationType = "Finished writing parameters from";
+                        break;
+
+                    case WriteType.TestWrite:
+                        operationType = "Finished test write from";
+                        break;
+
+                    default:
+                        operationType = "Unsupported operation with";
+                        break;
+                }
+            }
+            else
+            {
+                switch (writeType)
+                {
+                    case WriteType.Calibration:
+                        operationType = "An error occured while writing calibration from";
+                        break;
+
+                    case WriteType.Compare:
+                        operationType = "An error occured during comparison with";
+                        break;
+
+                    case WriteType.Full:
+                        operationType = "An error occured during full write from";
+                        break;
+
+                    case WriteType.OsPlusCalibrationPlusBoot:
+                        operationType = "An error occurred while writing all but parameters from";
+                        break;
+
+                    case WriteType.Parameters:
+                        operationType = "An error occured while writing parameters from";
+                        break;
+
+                    case WriteType.TestWrite:
+                        operationType = "An error occured during a test write from";
+                        break;
+
+                    default:
+                        operationType = "Unsupported operation with";
+                        break;
+                }
+            }
+
+            this.operation.Text = operationType + " " + path;
         }
 
         /// <summary>

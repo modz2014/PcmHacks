@@ -45,10 +45,10 @@ namespace PcmHacking
             BlockType blockTypes,
             CancellationToken cancellationToken)
         {
-            logger.AddUserMessage("Calculating CRCs from file...");
+            logger.AddUserMessage("Calculating CRCs from file.");
             this.GetCrcFromImage();
 
-            logger.AddUserMessage("Requesting CRCs from PCM...");
+            logger.AddUserMessage("Requesting CRCs from PCM. This will take a minute...");
             await this.vehicle.SendToolPresentNotification();
 
             // The kernel will remember (and return) the CRC value of the last block it 
