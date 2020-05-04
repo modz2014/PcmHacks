@@ -58,6 +58,8 @@
             this.writeFullToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemEnable4xReadWrite = new System.Windows.Forms.ToolStripMenuItem();
+            this.operation = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.interfaceBox.SuspendLayout();
             this.operationsBox.SuspendLayout();
             this.tabs.SuspendLayout();
@@ -73,21 +75,21 @@
             this.interfaceBox.Controls.Add(this.reinitializeButton);
             this.interfaceBox.Controls.Add(this.selectButton);
             this.interfaceBox.Controls.Add(this.deviceDescription);
-            this.interfaceBox.Location = new System.Drawing.Point(9, 26);
-            this.interfaceBox.Margin = new System.Windows.Forms.Padding(2);
+            this.interfaceBox.Location = new System.Drawing.Point(12, 32);
+            this.interfaceBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.interfaceBox.Name = "interfaceBox";
-            this.interfaceBox.Padding = new System.Windows.Forms.Padding(2);
-            this.interfaceBox.Size = new System.Drawing.Size(224, 93);
+            this.interfaceBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.interfaceBox.Size = new System.Drawing.Size(299, 114);
             this.interfaceBox.TabIndex = 0;
             this.interfaceBox.TabStop = false;
             this.interfaceBox.Text = "Device";
             // 
             // reinitializeButton
             // 
-            this.reinitializeButton.Location = new System.Drawing.Point(4, 62);
-            this.reinitializeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.reinitializeButton.Location = new System.Drawing.Point(5, 76);
+            this.reinitializeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reinitializeButton.Name = "reinitializeButton";
-            this.reinitializeButton.Size = new System.Drawing.Size(216, 25);
+            this.reinitializeButton.Size = new System.Drawing.Size(288, 31);
             this.reinitializeButton.TabIndex = 2;
             this.reinitializeButton.Text = "Re-&Initialize Device";
             this.reinitializeButton.UseVisualStyleBackColor = true;
@@ -95,9 +97,10 @@
             // 
             // selectButton
             // 
-            this.selectButton.Location = new System.Drawing.Point(4, 32);
+            this.selectButton.Location = new System.Drawing.Point(5, 39);
+            this.selectButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(216, 25);
+            this.selectButton.Size = new System.Drawing.Size(288, 31);
             this.selectButton.TabIndex = 1;
             this.selectButton.Text = "&Select Device";
             this.selectButton.UseVisualStyleBackColor = true;
@@ -105,10 +108,9 @@
             // 
             // deviceDescription
             // 
-            this.deviceDescription.Location = new System.Drawing.Point(4, 16);
-            this.deviceDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.deviceDescription.Location = new System.Drawing.Point(5, 20);
             this.deviceDescription.Name = "deviceDescription";
-            this.deviceDescription.Size = new System.Drawing.Size(214, 13);
+            this.deviceDescription.Size = new System.Drawing.Size(285, 16);
             this.deviceDescription.TabIndex = 0;
             this.deviceDescription.Text = "Device name will be displayed here";
             // 
@@ -121,21 +123,21 @@
             this.operationsBox.Controls.Add(this.cancelButton);
             this.operationsBox.Controls.Add(this.writeCalibrationButton);
             this.operationsBox.Controls.Add(this.readPropertiesButton);
-            this.operationsBox.Location = new System.Drawing.Point(9, 155);
-            this.operationsBox.Margin = new System.Windows.Forms.Padding(2);
+            this.operationsBox.Location = new System.Drawing.Point(12, 191);
+            this.operationsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.operationsBox.Name = "operationsBox";
-            this.operationsBox.Padding = new System.Windows.Forms.Padding(2);
-            this.operationsBox.Size = new System.Drawing.Size(224, 347);
+            this.operationsBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.operationsBox.Size = new System.Drawing.Size(299, 427);
             this.operationsBox.TabIndex = 1;
             this.operationsBox.TabStop = false;
             this.operationsBox.Text = "Operations";
             // 
             // testWriteButton
             // 
-            this.testWriteButton.Location = new System.Drawing.Point(4, 47);
-            this.testWriteButton.Margin = new System.Windows.Forms.Padding(2);
+            this.testWriteButton.Location = new System.Drawing.Point(5, 58);
+            this.testWriteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.testWriteButton.Name = "testWriteButton";
-            this.testWriteButton.Size = new System.Drawing.Size(216, 25);
+            this.testWriteButton.Size = new System.Drawing.Size(288, 31);
             this.testWriteButton.TabIndex = 4;
             this.testWriteButton.Text = "T&est Write";
             this.testWriteButton.UseVisualStyleBackColor = true;
@@ -144,10 +146,10 @@
             // exitKernelButton
             // 
             this.exitKernelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.exitKernelButton.Location = new System.Drawing.Point(4, 280);
-            this.exitKernelButton.Margin = new System.Windows.Forms.Padding(2);
+            this.exitKernelButton.Location = new System.Drawing.Point(5, 345);
+            this.exitKernelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitKernelButton.Name = "exitKernelButton";
-            this.exitKernelButton.Size = new System.Drawing.Size(216, 25);
+            this.exitKernelButton.Size = new System.Drawing.Size(288, 31);
             this.exitKernelButton.TabIndex = 9;
             this.exitKernelButton.Text = "&Halt Kernel";
             this.exitKernelButton.UseVisualStyleBackColor = true;
@@ -156,10 +158,10 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cancelButton.Location = new System.Drawing.Point(4, 314);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
+            this.cancelButton.Location = new System.Drawing.Point(5, 386);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(216, 25);
+            this.cancelButton.Size = new System.Drawing.Size(288, 31);
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -167,10 +169,10 @@
             // 
             // writeCalibrationButton
             // 
-            this.writeCalibrationButton.Location = new System.Drawing.Point(4, 76);
-            this.writeCalibrationButton.Margin = new System.Windows.Forms.Padding(2);
+            this.writeCalibrationButton.Location = new System.Drawing.Point(5, 94);
+            this.writeCalibrationButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.writeCalibrationButton.Name = "writeCalibrationButton";
-            this.writeCalibrationButton.Size = new System.Drawing.Size(216, 25);
+            this.writeCalibrationButton.Size = new System.Drawing.Size(288, 31);
             this.writeCalibrationButton.TabIndex = 5;
             this.writeCalibrationButton.Text = "&Write Calibration";
             this.writeCalibrationButton.UseVisualStyleBackColor = true;
@@ -178,10 +180,10 @@
             // 
             // readPropertiesButton
             // 
-            this.readPropertiesButton.Location = new System.Drawing.Point(4, 18);
-            this.readPropertiesButton.Margin = new System.Windows.Forms.Padding(2);
+            this.readPropertiesButton.Location = new System.Drawing.Point(5, 22);
+            this.readPropertiesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.readPropertiesButton.Name = "readPropertiesButton";
-            this.readPropertiesButton.Size = new System.Drawing.Size(216, 25);
+            this.readPropertiesButton.Size = new System.Drawing.Size(288, 31);
             this.readPropertiesButton.TabIndex = 0;
             this.readPropertiesButton.Text = "Read &Properties";
             this.readPropertiesButton.UseVisualStyleBackColor = true;
@@ -196,21 +198,22 @@
             this.tabs.Controls.Add(this.helpTab);
             this.tabs.Controls.Add(this.creditsTab);
             this.tabs.Controls.Add(this.debugTab);
-            this.tabs.Location = new System.Drawing.Point(238, 26);
-            this.tabs.Margin = new System.Windows.Forms.Padding(2);
+            this.tabs.Location = new System.Drawing.Point(317, 108);
+            this.tabs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(608, 476);
+            this.tabs.Size = new System.Drawing.Size(811, 510);
             this.tabs.TabIndex = 2;
+            this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
             // 
             // resultsTab
             // 
             this.resultsTab.Controls.Add(this.userLog);
-            this.resultsTab.Location = new System.Drawing.Point(4, 22);
-            this.resultsTab.Margin = new System.Windows.Forms.Padding(2);
+            this.resultsTab.Location = new System.Drawing.Point(4, 25);
+            this.resultsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultsTab.Name = "resultsTab";
-            this.resultsTab.Padding = new System.Windows.Forms.Padding(2);
-            this.resultsTab.Size = new System.Drawing.Size(600, 450);
+            this.resultsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.resultsTab.Size = new System.Drawing.Size(803, 481);
             this.resultsTab.TabIndex = 0;
             this.resultsTab.Text = "Results";
             this.resultsTab.UseVisualStyleBackColor = true;
@@ -220,22 +223,22 @@
             this.userLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.userLog.Location = new System.Drawing.Point(4, 5);
-            this.userLog.Margin = new System.Windows.Forms.Padding(2);
+            this.userLog.Location = new System.Drawing.Point(5, 6);
+            this.userLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.userLog.Multiline = true;
             this.userLog.Name = "userLog";
             this.userLog.ReadOnly = true;
             this.userLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.userLog.Size = new System.Drawing.Size(594, 441);
+            this.userLog.Size = new System.Drawing.Size(791, 466);
             this.userLog.TabIndex = 0;
             // 
             // helpTab
             // 
             this.helpTab.Controls.Add(this.helpWebBrowser);
-            this.helpTab.Location = new System.Drawing.Point(4, 22);
-            this.helpTab.Margin = new System.Windows.Forms.Padding(2);
+            this.helpTab.Location = new System.Drawing.Point(4, 25);
+            this.helpTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.helpTab.Name = "helpTab";
-            this.helpTab.Size = new System.Drawing.Size(600, 450);
+            this.helpTab.Size = new System.Drawing.Size(803, 557);
             this.helpTab.TabIndex = 2;
             this.helpTab.Text = "Help";
             this.helpTab.UseVisualStyleBackColor = true;
@@ -244,19 +247,20 @@
             // 
             this.helpWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.helpWebBrowser.Location = new System.Drawing.Point(0, 0);
-            this.helpWebBrowser.Margin = new System.Windows.Forms.Padding(2);
-            this.helpWebBrowser.MinimumSize = new System.Drawing.Size(15, 16);
+            this.helpWebBrowser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.helpWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.helpWebBrowser.Name = "helpWebBrowser";
-            this.helpWebBrowser.Size = new System.Drawing.Size(600, 450);
+            this.helpWebBrowser.Size = new System.Drawing.Size(803, 557);
             this.helpWebBrowser.TabIndex = 0;
             // 
             // creditsTab
             // 
             this.creditsTab.Controls.Add(this.creditsWebBrowser);
-            this.creditsTab.Location = new System.Drawing.Point(4, 22);
+            this.creditsTab.Location = new System.Drawing.Point(4, 25);
+            this.creditsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.creditsTab.Name = "creditsTab";
-            this.creditsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.creditsTab.Size = new System.Drawing.Size(600, 450);
+            this.creditsTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.creditsTab.Size = new System.Drawing.Size(803, 557);
             this.creditsTab.TabIndex = 3;
             this.creditsTab.Text = "Credits";
             this.creditsTab.UseVisualStyleBackColor = true;
@@ -264,21 +268,21 @@
             // creditsWebBrowser
             // 
             this.creditsWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.creditsWebBrowser.Location = new System.Drawing.Point(3, 3);
-            this.creditsWebBrowser.Margin = new System.Windows.Forms.Padding(2);
-            this.creditsWebBrowser.MinimumSize = new System.Drawing.Size(15, 16);
+            this.creditsWebBrowser.Location = new System.Drawing.Point(4, 4);
+            this.creditsWebBrowser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.creditsWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.creditsWebBrowser.Name = "creditsWebBrowser";
-            this.creditsWebBrowser.Size = new System.Drawing.Size(594, 444);
+            this.creditsWebBrowser.Size = new System.Drawing.Size(795, 549);
             this.creditsWebBrowser.TabIndex = 1;
             // 
             // debugTab
             // 
             this.debugTab.Controls.Add(this.debugLog);
-            this.debugTab.Location = new System.Drawing.Point(4, 22);
-            this.debugTab.Margin = new System.Windows.Forms.Padding(2);
+            this.debugTab.Location = new System.Drawing.Point(4, 25);
+            this.debugTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.debugTab.Name = "debugTab";
-            this.debugTab.Padding = new System.Windows.Forms.Padding(2);
-            this.debugTab.Size = new System.Drawing.Size(600, 450);
+            this.debugTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.debugTab.Size = new System.Drawing.Size(803, 557);
             this.debugTab.TabIndex = 1;
             this.debugTab.Text = "Debug Log";
             this.debugTab.UseVisualStyleBackColor = true;
@@ -286,23 +290,25 @@
             // debugLog
             // 
             this.debugLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.debugLog.Location = new System.Drawing.Point(2, 2);
-            this.debugLog.Margin = new System.Windows.Forms.Padding(2);
+            this.debugLog.Location = new System.Drawing.Point(3, 2);
+            this.debugLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.debugLog.Multiline = true;
             this.debugLog.Name = "debugLog";
             this.debugLog.ReadOnly = true;
             this.debugLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.debugLog.Size = new System.Drawing.Size(596, 446);
+            this.debugLog.Size = new System.Drawing.Size(797, 553);
             this.debugLog.TabIndex = 0;
             // 
             // menuStripMain
             // 
+            this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemTools,
             this.menuItemOptions});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(854, 24);
+            this.menuStripMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStripMain.Size = new System.Drawing.Size(1139, 28);
             this.menuStripMain.TabIndex = 3;
             this.menuStripMain.Text = "Main Menu";
             // 
@@ -316,48 +322,48 @@
             this.writeOSCalibrationBootToolStripMenuItem,
             this.writeFullToolStripMenuItem});
             this.menuItemTools.Name = "menuItemTools";
-            this.menuItemTools.Size = new System.Drawing.Size(44, 20);
+            this.menuItemTools.Size = new System.Drawing.Size(56, 24);
             this.menuItemTools.Text = "&Tools";
             // 
             // readEntirePCMToolStripMenuItem
             // 
             this.readEntirePCMToolStripMenuItem.Name = "readEntirePCMToolStripMenuItem";
-            this.readEntirePCMToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.readEntirePCMToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
             this.readEntirePCMToolStripMenuItem.Text = "&Read Entire PCM";
             this.readEntirePCMToolStripMenuItem.Click += new System.EventHandler(this.readFullContentsButton_Click);
             // 
             // verifyEntirePCMToolStripMenuItem
             // 
             this.verifyEntirePCMToolStripMenuItem.Name = "verifyEntirePCMToolStripMenuItem";
-            this.verifyEntirePCMToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.verifyEntirePCMToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
             this.verifyEntirePCMToolStripMenuItem.Text = "&Verify Entire PCM";
             this.verifyEntirePCMToolStripMenuItem.Click += new System.EventHandler(this.quickComparisonButton_Click);
             // 
             // modifyVINToolStripMenuItem
             // 
             this.modifyVINToolStripMenuItem.Name = "modifyVINToolStripMenuItem";
-            this.modifyVINToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.modifyVINToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
             this.modifyVINToolStripMenuItem.Text = "&Change VIN";
             this.modifyVINToolStripMenuItem.Click += new System.EventHandler(this.modifyVinButton_Click);
             // 
             // writeParmetersCloneToolStripMenuItem
             // 
             this.writeParmetersCloneToolStripMenuItem.Name = "writeParmetersCloneToolStripMenuItem";
-            this.writeParmetersCloneToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.writeParmetersCloneToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
             this.writeParmetersCloneToolStripMenuItem.Text = "Write &Parameters";
             this.writeParmetersCloneToolStripMenuItem.Click += new System.EventHandler(this.writeParametersButton_Click);
             // 
             // writeOSCalibrationBootToolStripMenuItem
             // 
             this.writeOSCalibrationBootToolStripMenuItem.Name = "writeOSCalibrationBootToolStripMenuItem";
-            this.writeOSCalibrationBootToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.writeOSCalibrationBootToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
             this.writeOSCalibrationBootToolStripMenuItem.Text = "Write &OS, Calibration && Boot";
             this.writeOSCalibrationBootToolStripMenuItem.Click += new System.EventHandler(this.writeOSCalibrationBootToolStripMenuItem_Click);
             // 
             // writeFullToolStripMenuItem
             // 
             this.writeFullToolStripMenuItem.Name = "writeFullToolStripMenuItem";
-            this.writeFullToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.writeFullToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
             this.writeFullToolStripMenuItem.Text = "Write &Full Flash (Clone)";
             this.writeFullToolStripMenuItem.Click += new System.EventHandler(this.writeFullToolStripMenuItem_Click);
             // 
@@ -366,29 +372,46 @@
             this.menuItemOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemEnable4xReadWrite});
             this.menuItemOptions.Name = "menuItemOptions";
-            this.menuItemOptions.Size = new System.Drawing.Size(56, 20);
+            this.menuItemOptions.Size = new System.Drawing.Size(73, 24);
             this.menuItemOptions.Text = "&Options";
             // 
             // menuItemEnable4xReadWrite
             // 
             this.menuItemEnable4xReadWrite.Name = "menuItemEnable4xReadWrite";
-            this.menuItemEnable4xReadWrite.Size = new System.Drawing.Size(196, 22);
+            this.menuItemEnable4xReadWrite.Size = new System.Drawing.Size(257, 26);
             this.menuItemEnable4xReadWrite.Text = "Enable &4x Communication";
             this.menuItemEnable4xReadWrite.Click += new System.EventHandler(this.enable4xReadWrite_Click);
+            // 
+            // operation
+            // 
+            this.operation.Location = new System.Drawing.Point(318, 42);
+            this.operation.Name = "operation";
+            this.operation.Size = new System.Drawing.Size(285, 16);
+            this.operation.TabIndex = 3;
+            this.operation.Text = "Current operation will be displayed here.";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(321, 71);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(803, 23);
+            this.progressBar.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AcceptButton = this.readPropertiesButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 513);
+            this.ClientSize = new System.Drawing.Size(1139, 631);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.operation);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.operationsBox);
             this.Controls.Add(this.interfaceBox);
             this.Controls.Add(this.menuStripMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "PCM Hammer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -440,6 +463,8 @@
         private System.Windows.Forms.ToolStripMenuItem writeParmetersCloneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeOSCalibrationBootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeFullToolStripMenuItem;
+        private System.Windows.Forms.Label operation;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

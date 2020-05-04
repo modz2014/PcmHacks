@@ -516,12 +516,7 @@ namespace PcmHacking
                     }
                 }
 
-                logger.AddUserMessage(
-                    string.Format(
-                        "0x{0:X6}\t{1}%\t{2}",
-                        startAddress,
-                        totalWritten * 100 / totalSize,
-                        timeRemaining));
+                logger.ReportProgress("Writing", totalWritten / totalSize);
 
                 await this.vehicle.SetDeviceTimeout(TimeoutScenario.WriteMemoryBlock);
 

@@ -27,5 +27,10 @@ namespace PcmHacking
         /// These should be things that we can use to diagnose errors.
         /// Feel free to include raw sequences of bytes.
         void AddDebugMessage(string message);
+
+        /// <summary>
+        /// Update the progress bar.
+        /// </summary>
+        void ReportProgress(string operation, double fractionCompleted);
     }
 }

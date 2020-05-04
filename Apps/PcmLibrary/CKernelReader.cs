@@ -266,13 +266,14 @@ namespace PcmHacking
                     }
                 }
 
-                logger.AddUserMessage(
+                logger.AddDebugMessage(
                     string.Format(
                         "0x{0:X6}\t{1}%\t{2}",
                         startAddress,
                         startAddress * 100 / image.Length,
                         timeRemaining));
 
+                logger.ReportProgress("Reading", (startAddress + payload.Length) / image.Length);
                 return Response.Create(ResponseStatus.Success, true, retryCount);
             }
 

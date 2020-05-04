@@ -56,6 +56,11 @@ namespace PcmHacking
         private WriteType currentWriteType = WriteType.None;
 
         /// <summary>
+        /// This accumulates debug log messages while the debug tab is not visible.
+        /// </summary>
+        private StringBuilder debugStringBuilder = new StringBuilder();
+
+        /// <summary>
         /// Initializes a new instance of the main window.
         /// </summary>
         public MainForm()
@@ -97,8 +102,24 @@ namespace PcmHacking
             this.debugLog.Invoke(
                 (MethodInvoker)delegate ()
                 {
-                    this.debugLog.AppendText("[" + timestamp + "]  " + message + Environment.NewLine);
+                    string logMessage = "[" + timestamp + "]  " + message + Environment.NewLine;
+                    if (this.tabs.SelectedTab == this.debugTab)
+                    {
+                        this.debugLog.AppendText(logMessage);
+                    }
+                    else
+                    {
+                        this.debugStringBuilder.Append(logMessage);
+                    }
                 });
+        }
+
+        /// <summary>
+        /// Update the progress bar.
+        /// </summary>
+        public override void ReportProgress(string operation, double fractionCompleted)
+        {
+            this.progressBar.Value = (int)(fractionCompleted * 100);
         }
 
         /// <summary>
@@ -1151,6 +1172,17 @@ namespace PcmHacking
                 // The token / token-source can only be cancelled once, so we need to make sure they won't be re-used.
                 this.cancellationTokenSource = null;
             }
+        }
+
+        private void tabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.tabs.SelectedTab == this.debugTab)
+            {
+                this.debugLog.AppendText(this.debugStringBuilder.ToString());
+                this.debugStringBuilder.Clear();
+            }
+
+            TabPage oldTab = this.tabs.SelectedTab;
         }
     }
 }

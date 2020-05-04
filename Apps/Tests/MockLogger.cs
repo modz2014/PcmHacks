@@ -16,5 +16,9 @@ namespace Tests
         public void AddUserMessage(string message)
         {
         }
+
+        public void ReportProgress(string operation, double fractionCompleted)
+        {
+        }
     }
 }

@@ -20,6 +20,8 @@ namespace PcmHacking
                
         public virtual void AddDebugMessage(string message) { }
         public virtual void AddUserMessage(string message) { }
+        public virtual void ReportProgress(string operation, double fractionCompleted) { }
+
         public virtual void ResetLogs() { }
 
         public virtual string GetAppNameAndVersion() { return "MainFormBase.GetAppNameAndVersion is not implemented"; }

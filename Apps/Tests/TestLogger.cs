@@ -28,5 +28,10 @@ namespace Tests
         {
             this.UserMessages.AppendLine(message);
         }
+
+        public void ReportProgress(string operation, double fractionCompleted)
+        {
+            this.UserMessages.AppendLine(string.Format("{0} - {1:F2}", operation, fractionCompleted));
+        }
     }
 }
