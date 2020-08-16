@@ -311,8 +311,6 @@ namespace PcmHacking
                         this.logger.AddUserMessage("Writing...");
                     }
 
-                    this.logger.AddUserMessage("Address\t% Done\tTime Remaining");
-
                     Response<bool> writeResponse = await WriteMemoryRange(
                         range,
                         image,

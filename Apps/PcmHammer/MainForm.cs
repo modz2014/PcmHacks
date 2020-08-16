@@ -119,7 +119,11 @@ namespace PcmHacking
         /// </summary>
         public override void ReportProgress(string operation, double fractionCompleted)
         {
-            this.progressBar.Value = (int)(fractionCompleted * 100);
+            this.progressBar.Invoke(
+                (MethodInvoker)delegate ()
+                {
+                    this.progressBar.Value = (int)(fractionCompleted * 100);
+                });
         }
 
         /// <summary>
