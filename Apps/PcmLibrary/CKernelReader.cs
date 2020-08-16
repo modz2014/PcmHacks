@@ -96,8 +96,6 @@ namespace PcmHacking
 
                 await this.vehicle.SetDeviceTimeout(TimeoutScenario.ReadMemoryBlock);
 
-                this.logger.AddUserMessage("Address\t% Done\tTime Remaining");
-
                 byte[] image = new byte[flashChip.Size];
                 int retryCount = 0;
                 int startAddress = 0;
@@ -273,7 +271,7 @@ namespace PcmHacking
                         startAddress * 100 / image.Length,
                         timeRemaining));
 
-                logger.ReportProgress("Reading", (startAddress + payload.Length) / image.Length);
+                logger.ReportProgress("Reading", (double)(startAddress + payload.Length) / image.Length);
                 return Response.Create(ResponseStatus.Success, true, retryCount);
             }
 
